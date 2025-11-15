@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+.modal-container {
+  @apply relative w-[90%] max-w-md rounded-2xl bg-white py-[30px] px-[41px] shadow-lg;
+}
+
+.modal-icon-container {
+  @apply flex w-full justify-center mb-4;
+}
+
+.modal-close-button {
+  @apply absolute right-4 top-4 text-gray-500 cursor-pointer hover:text-gray-700;
+}
+
+.modal-title {
+  font-family: var(--font-lato), sans-serif;
+  @apply font-normal text-[18px] text-black w-full text-center mb-[5px];
+}
+
+.modal-message {
+  font-family: var(--font-lato), sans-serif;
+  @apply font-light text-[18px] text-black w-full text-center mb-6 px-5;
+}
+
+.modal-buttons-container {
+  @apply flex justify-center w-full gap-8;
+}
+
+.modal-button {
+  font-family: var(--font-lato), sans-serif;
+  @apply text-base font-bold px-5 py-1.5 min-w-[162px] min-h-[39px];
+}

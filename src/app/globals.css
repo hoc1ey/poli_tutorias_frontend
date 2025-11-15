@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --dark-blue: #17243D;
+  --blue: #1A237E;
+  --light-blue: #0057FF40;
+  --dark-yellow: #FBBF24;
+  --light-yellow: #F3C75D8A;
+  --light-green: #DCFCE7;
+  --green: #00A32B;
+  --grey: #C4C4C4;
+  --grey-blue: #4F5F7D;
+  --grey-border: #9598AF;
+  --white-background: #F3F6FF;
+  --white: #FFFFFF;
+  --black: #000000;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+.font-lato {
+  font-family: var(--font-lato), sans-serif;
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-ibm {
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}
+
+.font-dancing {
+  font-family: var(--font-dancing-script), sans-serif;
+}
+
+.btn-dark-yellow {
+  @apply bg-(--dark-yellow) text-(--dark-blue) hover:bg-(--light-yellow) rounded-md transition-colors cursor-pointer
+}
+
+.btn-dark-blue {
+  @apply bg-(--dark-blue) text-white hover:bg-(--grey) hover:text-(--dark-blue) rounded-md transition-colors cursor-pointer
+}
+
+.section-title {
+  @apply text-[48px] font-extrabold text-(--dark-blue);
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.section-description {
+  @apply text-[16px] text-(--grey-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.offer-detail-card {
+  @apply flex flex-col px-[25px] py-[25px] rounded-lg border border-(--grey) shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]
+}
+
+.offer-detail-section-title {
+  @apply text-[20px] font-bold text-(--dark-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.offer-detail-section-content {
+  @apply text-[16px] text-(--grey-blue) mb-[8px];
+  font-family: var(--font-inter), sans-serif;
+}
+
+.offer-grid-no-content {
+  @apply text-3xl font-bold text-(--grey-blue);
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.spin-animation {
+  @apply animate-spin border-t-transparent rounded-full
+}

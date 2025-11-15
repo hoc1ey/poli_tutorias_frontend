@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.form-select {
+  @apply outline-none border rounded-sm focus-within:border-(--dark-blue);
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}

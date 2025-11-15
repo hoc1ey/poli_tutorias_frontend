@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Estilos para los slots de tiempo */
+
+.slot-selected {
+  @apply bg-(--dark-blue) text-white cursor-pointer;
+}
+
+.slot-available {
+  @apply cursor-pointer hover:bg-gray-50 transition-colors;
+}
+
+.slot-unavailable {
+  @apply cursor-not-allowed bg-(--light-grey) text-(--grey);
+}

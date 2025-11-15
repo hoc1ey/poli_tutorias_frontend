@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.form-textarea {
+  @apply outline-none border rounded-sm focus-within:border-(--dark-blue) resize-none;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}

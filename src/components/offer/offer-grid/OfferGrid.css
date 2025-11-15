@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+.image-container {
+  @apply relative w-[355.56px] h-[200px] shrink-0 overflow-hidden rounded-md border-[0.5px] border-(--grey);
+}
+
+.summary-container {
+  @apply flex flex-col w-9/10 md:w-[650px] gap-[8px] pl-[19px] pr-[40px] mt-[11px];
+}
+
+.mode-tag {
+  @apply w-fit font-extrabold text-[14px] text-(--dark-blue) bg-(--light-blue) rounded-[10px] px-[16px] h-[25px] mt-[8px];
+  font-family: var(--font-inter), sans-serif;
+}
+
+.price {
+  @apply w-fit font-extrabold text-[18px] text-(--dark-blue);
+  font-family: var(--font-inter), sans-serif;
+}

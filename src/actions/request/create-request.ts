@@ -1,0 +1,36 @@
+'use server';
+
+import { CreateRequestResponse, Request } from "@/interfaces";
+import { fetchApi } from "../fetchApi";
+
+
+export const createRequest = async (requestData: Request): Promise<CreateRequestResponse> => {
+
+  try {
+    const requestOptions: RequestInit = {
+      method: "POST",
+      body: JSON.stringify(requestData),
+      redirect: "follow",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetchApi('/request/new', requestOptions);
+
+    return await response.json();
+
+  } catch (error) {
+
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Error al crear la solicitud',
+      statusCode: 500,
+      timestamp: new Date().toISOString(),
+      path: '/request/new',
+      data: null as any,
+    }
+
+  }
+
+}

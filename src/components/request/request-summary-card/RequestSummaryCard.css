@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+.request-summary-container {
+  @apply gap-4 h-fit;
+}
+
+.request-price-container {
+  @apply flex items-end;
+}
+
+.request-price-value {
+  @apply text-[36px] font-bold text-(--dark-blue) mr-2.5;
+}
+
+.request-price-unit {
+  @apply mb-2;
+}
+
+.request-selection-box {
+  @apply flex flex-col gap-2 w-full px-[13px] py-[13px] bg-(--light-grey) border border-(--grey) rounded-[6px];
+}
+
+.request-selection-title {
+  @apply font-semibold text-[14px] text-(--dark-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-no-selection-message {
+  @apply font-semibold text-[14px] text-(--grey);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-time-slot {
+  @apply font-normal text-[14px] text-(--dark-blue) text-left;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-divider {
+  @apply text-(--grey);
+}
+
+.request-total-label {
+  @apply text-end font-bold text-[18px] text-(--dark-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-choose-message {
+  @apply text-center font-semibold text-[14px] text-(--grey-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-payment-title {
+  @apply font-semibold text-[14px] text-(--dark-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-payment-options {
+  @apply flex gap-[17px];
+}
+
+.request-payment-label {
+  @apply flex items-center gap-2;
+}
+
+.request-payment-label input[type="radio"] {
+  @apply cursor-pointer;
+  accent-color: var(--dark-blue);
+}
+
+.request-payment-text {
+  @apply font-normal text-[14px] text-(--dark-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-info-box {
+  @apply flex gap-[7px] bg-(--light-yellow) w-full px-2.5 py-2 rounded-[5px];
+}
+
+.request-info-icon-wrapper {
+  @apply h-full;
+}
+
+.request-info-text {
+  @apply font-normal text-[10px] text-(--grey-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.request-submit-button {
+  @apply w-full py-3 font-semibold text-[18px];
+  font-family: var(--font-inter), sans-serif;
+}
+

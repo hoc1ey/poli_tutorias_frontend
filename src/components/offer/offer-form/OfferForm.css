@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+.error-message {
+  
+}
+
+.offer-form-label {
+  @apply text-(--dark-blue) text-[16px] mb-2;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}
+
+.offer-form-field {
+  @apply flex flex-col mb-[28px];
+}
+
+.offer-form-two-column {
+  @apply flex flex-col md:flex-row;
+}
+
+.offer-form-column-left {
+  @apply flex flex-col w-full md:w-1/2 md:pr-10;
+}
+
+.offer-form-column-right {
+  @apply flex flex-col w-full md:w-1/2 md:pl-10;
+}
+
+.offer-input-full {
+  @apply w-full h-[38px] text-[16px] p-[10px] outline-none border rounded-sm focus-within:border-(--dark-blue);
+}
+
+.offer-select-full {
+  @apply w-full h-[38px] text-[16px] px-[10px] outline-none border rounded-sm focus-within:border-(--dark-blue);
+}
+
+.offer-textarea-full {
+  @apply w-full h-[118px] text-[16px] p-[10px];
+}
+
+.offer-input-text-color {
+  @apply text-(--dark-blue);
+}
+
+.price-input-wrapper {
+  @apply flex items-center;
+}
+
+.price-unit-label {
+  @apply text-(--grey) p-[10px];
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}

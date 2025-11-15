@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+.schedule-header {
+  @apply text-[20px] font-bold bg-(--dark-blue) text-white text-center 
+  px-[30px] py-[5px] w-[200px] h-[55.9px] border-[0.5px] border-white;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.schedule-hour {
+  @apply text-[15px] font-medium text-black bg-(--light-blue) text-center
+  px-[47px] py-[5px] w-[200px] h-[55.9px] border-[0.5px] border-(--grey-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.schedule-hour.rounded-bl-\[10px\] {
+  border-bottom-left-radius: 10px;
+}
+
+.schedule-slot {
+  @apply text-[15px] font-bold text-center
+  px-[47px] py-[5px] w-[200px] h-[55.9px] border-[0.5px] border-(--grey-blue);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.schedule-slot.rounded-br-\[10px\] {
+  border-bottom-right-radius: 10px;
+}
+
+.available-schedule-slot {
+  @apply bg-(--light-green) text-(--green);
+}
+
+.schedule-slot.occupied {
+  @apply bg-red-100 text-red-700;
+}
+
+.schedule-slot.requested {
+  @apply bg-yellow-100 text-yellow-700;
+}

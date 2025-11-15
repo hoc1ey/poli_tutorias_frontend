@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.subject-name {
+  @apply font-extrabold text-[32px];
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.offer-info {
+  @apply text-[16px];
+  font-family: var(--font-inter), sans-serif;
+}

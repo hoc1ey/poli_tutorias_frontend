@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+.flex-row-input-container {
+  @apply flex gap-[28px] justify-between my-[9px];
+}
+
+.form-field-container {
+  @apply flex flex-col;
+}
+
+.input-default {
+  @apply w-[270px] h-[38px] text-[16px] p-[10px];
+}
+
+.input-default-text {
+  @apply text-(--dark-blue);
+}
+
+.input-full-width {
+  @apply w-[568px] h-[38px] text-[16px] p-[10px];
+}
+
+.input-responsive-full {
+  @apply w-full h-[38px] text-[16px] p-[10px];
+}
+
+.select-default {
+  @apply w-[270px] h-[38px] text-[16px] px-[10px];
+}
+
+.select-full-width {
+  @apply w-full h-[38px] text-[16px] px-[10px];
+}
+
+.textarea-default {
+  @apply w-[270px] h-[118px] text-[16px] p-[10px];
+}
+
+.textarea-full-width {
+  @apply w-[568px] h-[118px] text-[16px] p-[10px];
+}
+
+.password-wrapper-default {
+  @apply h-[38px] px-[10px] text-[16px];
+}
+
+.form-error-message {
+  @apply text-red-700 text-sm mt-1;
+}
+
+.container-default {
+  @apply flex flex-col w-[270px];
+}
+
+.container-full-width {
+  @apply flex flex-col w-[568px];
+}
+
+.container-responsive-full {
+  @apply flex flex-col w-full my-[14px];
+}

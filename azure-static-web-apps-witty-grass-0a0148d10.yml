@@ -1,0 +1,38 @@
+name: Azure Static Web Apps CI/CD
+
+pr:
+  branches:
+    include:
+      - develop
+trigger:
+  branches:
+    include:
+      - develop
+
+jobs:
+  - job: build_and_deploy_job
+    displayName: Build and Deploy Job
+    condition: or(eq(variables['Build.Reason'], 'Manual'),or(eq(variables['Build.Reason'], 'PullRequest'),eq(variables['Build.Reason'], 'IndividualCI')))
+    pool:
+      name: PoliTutorias-LocalPool
+    variables:
+      - group: Azure-Static-Web-Apps-witty-grass-0a0148d10-variable-group
+    steps:
+      # Paso de limpieza del workspace
+      - script: |
+          echo "Limpiando workspace local..."
+          rm -rf $(Agent.BuildDirectory)/*
+          echo "Workspace limpio."
+        displayName: "Clean workspace"
+
+      # Luego hace el checkout normal
+      - checkout: self
+        submodules: true
+
+      # Y finalmente el despliegue
+      - task: AzureStaticWebApp@0
+        inputs:
+          azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_WITTY_GRASS_0A0148D10)
+          app_location: "/"
+          api_location: ""
+          output_location: ".next"
