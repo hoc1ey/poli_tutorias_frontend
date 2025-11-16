@@ -1,5 +1,4 @@
 export const dynamic = 'force-dynamic';
-
 import { getCareersAndSubjects, getSchedule } from '@/actions';
 import { PublishOffer } from '@/components';
 import { ResolvingMetadata, Metadata } from 'next';

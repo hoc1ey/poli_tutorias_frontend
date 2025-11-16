@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import { getUserSession } from "../../actions";
 
+
 export default async function AuthLayout({
   children
 }: {

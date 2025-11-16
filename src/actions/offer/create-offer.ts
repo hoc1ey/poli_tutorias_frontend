@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from "next/cache";
 import { CareersSubjectResponse } from "../../interfaces"
 import { fetchApi, getUserSession } from "@/actions";
 
@@ -15,17 +16,40 @@ export const createOffer = async (formdata: FormData): Promise<CareersSubjectRes
 
     const response = await fetchApi(`/offer/new`, requestOptions);
     const result = await response.json();
+
+    if (result.success) {
+      revalidatePath('/tutor/offers')
+      revalidatePath('/student')
+    }
+
     return result
 
   } catch (error: any) {
+
     return {
       success: false,
-      message: error.message as string,
+      message: "Unknown error",
       statusCode: 500,
       timestamp: new Date().toISOString(),
       path: '/offer/new',
-      data: [] as any,
-    }
+      data: {
+        faculty: '',
+        careers: []
+      },
+    };
+
   }
+
+  return {
+    success: false,
+    message: "Unknown error",
+    statusCode: 500,
+    timestamp: new Date().toISOString(),
+    path: '/offer/new',
+    data: {
+      faculty: '',
+      careers: []
+    },
+  };
 
 }

@@ -2,7 +2,6 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { clearAuthCookies } from "./auth/clear-auth-cookies";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -20,8 +19,8 @@ const attemptTokenRefresh = async (): Promise<boolean> => {
   const refreshResponse = await fetch(`${BACKEND_URL}/auth/refresh`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${refreshToken}`,
-      "Content-Type": "application/json",
+      "Authorization": `Bearer ${refreshToken}`,
+      "Content-Type": "application/json"
     },
   });
 
@@ -34,11 +33,14 @@ const attemptTokenRefresh = async (): Promise<boolean> => {
 
     return true;
   } else {
-    await clearAuthCookies();
+    const cookieStore = await cookies();
+    cookieStore.delete("token");
+    cookieStore.delete("refreshToken");
+    cookieStore.delete("user");
     redirect("/auth/login");
     return false;
   }
-};
+}
 
 export const fetchApi = async (
   url: string,
@@ -56,40 +58,32 @@ export const fetchApi = async (
     }
 
     const method = (options.method || "GET").toString().toUpperCase();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const body = options.body as any;
 
-    const isFormData =
-      typeof FormData !== "undefined" && body instanceof FormData;
-    const isURLSearchParams =
-      typeof URLSearchParams !== "undefined" && body instanceof URLSearchParams;
+    const isFormData = typeof FormData !== "undefined" && body instanceof FormData;
+    const isURLSearchParams = typeof URLSearchParams !== "undefined" && body instanceof URLSearchParams;
 
-    if (
-      !headers.get("Content-Type") &&
-      method !== "GET" &&
-      !isFormData &&
-      !isURLSearchParams
-    ) {
+    if (!headers.get("Content-Type") && method !== "GET" && !isFormData && !isURLSearchParams) {
       headers.set("Content-Type", "application/json");
     }
 
     return headers;
   };
 
-  let response = await fetch(fullUrl, {
+  const fetchOptions: RequestInit = {
     ...options,
     headers: await setAuthHeaders(),
-    credentials: "include",
-  });
+    credentials: 'include',
+    cache: 'no-store'
+  };
+
+  let response = await fetch(fullUrl, fetchOptions);
 
   if (response.status === 401) {
     const refreshed = await attemptTokenRefresh();
 
     if (refreshed) {
-      response = await fetch(fullUrl, {
-        ...options,
-        headers: await setAuthHeaders(),
-      });
+      response = await fetch(fullUrl, fetchOptions);
     }
   }
 

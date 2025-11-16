@@ -12,6 +12,8 @@ interface Props {
 
 export const NewAccountForm = ({ faculties }: Props) => {
 
+  const router = useRouter();
+
   const {
     handleSubmit,
     onSubmit,
@@ -22,9 +24,19 @@ export const NewAccountForm = ({ faculties }: Props) => {
     availableCareers
   } = useNewAccountForm(faculties);
 
-  const { openWarning } = useAppModal();
+  const { openWarning, openError } = useAppModal();
 
-  const router = useRouter();
+  if (!faculties) {
+    openError({
+      message: 'Error al cargar las materias',
+      btnText: 'Cerrar',
+    },
+      () => {
+        router.replace('/auth/login')
+      }
+    )
+  }
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center align-middle pb-[89px]'>

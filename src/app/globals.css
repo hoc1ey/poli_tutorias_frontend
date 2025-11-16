@@ -5,9 +5,10 @@
   --blue: #1A237E;
   --light-blue: #0057FF40;
   --dark-yellow: #FBBF24;
-  --light-yellow: #F3C75D8A;
+  --light-yellow: #FEF3C7;
   --light-green: #DCFCE7;
   --green: #00A32B;
+  --light-grey: #F9FAFB;
   --grey: #C4C4C4;
   --grey-blue: #4F5F7D;
   --grey-border: #9598AF;
@@ -59,7 +60,7 @@ html {
 }
 
 .offer-detail-card {
-  @apply flex flex-col px-[25px] py-[25px] rounded-lg border border-(--grey) shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]
+  @apply flex flex-col px-[25px] py-[25px] bg-white rounded-lg border border-(--grey) shadow-[1px_1px_4px_0px_rgba(0,0,0,0.1)]
 }
 
 .offer-detail-section-title {
@@ -80,3 +81,4 @@ html {
 .spin-animation {
   @apply animate-spin border-t-transparent rounded-full
 }
+

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { getUserSession } from "../../actions";
 import { TopMenu } from "../../components";
 
+
 const menuItems = [
   {
     title: 'Inicio',

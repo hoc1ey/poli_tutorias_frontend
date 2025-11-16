@@ -4,6 +4,7 @@ import { getSchedule } from '../../../actions';
 import { Schedule } from '../../../components';
 import { TitleWithButton } from '../../../components/ui/title-with-button/TitleWithButton';
 
+
 const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
