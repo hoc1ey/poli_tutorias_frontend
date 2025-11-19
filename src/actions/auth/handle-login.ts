@@ -29,8 +29,8 @@ export const handleLogin = async (
     const result: LoginResponse = await response.json();
 
     if (result.success) {
-      const { accessToken, refreshToken, ...user } = result.data;
-      await setAuthCookies({ accessToken, refreshToken, user });
+      const { data: user } = result;
+      await setAuthCookies({ user });
     }
 
     return result;

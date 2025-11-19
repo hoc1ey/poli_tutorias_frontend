@@ -7,11 +7,20 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const attemptTokenRefresh = async (): Promise<boolean> => {
   const cookiesStore = await cookies();
-  const refreshToken = cookiesStore.get("refreshToken")?.value;
+  const userCookie = cookiesStore.get("user")?.value;
+  let refreshToken: string | undefined;
+
+  if (userCookie) {
+    try {
+      const userData = JSON.parse(userCookie);
+      refreshToken = userData.refreshToken;
+    } catch (error) {
+      console.error('Error parsing user cookie for refresh:', error);
+    }
+  }
 
   if (!refreshToken) {
-    cookiesStore.delete("token");
-    cookiesStore.delete("refreshToken");
+    cookiesStore.delete("user");
     redirect("/auth/login");
     return false;
   }
@@ -27,16 +36,27 @@ const attemptTokenRefresh = async (): Promise<boolean> => {
   if (refreshResponse.ok) {
     const data = await refreshResponse.json();
 
-    const cookieStore = await cookies();
-    cookieStore.set("token", data.accessToken);
-    cookieStore.set("refreshToken", data.refreshToken);
+    const userCookie = cookiesStore.get("user")?.value;
+    if (userCookie) {
+      try {
+        const userData = JSON.parse(userCookie);
+        userData.accessToken = data.accessToken;
+        userData.refreshToken = data.refreshToken;
+
+        cookiesStore.set("user", JSON.stringify(userData), {
+          httpOnly: false,
+          sameSite: 'lax',
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: 60 * 60 * 2 // 2 horas
+        });
+      } catch (error) {
+        console.error('Error updating user cookie:', error);
+      }
+    }
 
     return true;
   } else {
-    const cookieStore = await cookies();
-    cookieStore.delete("token");
-    cookieStore.delete("refreshToken");
-    cookieStore.delete("user");
+    cookiesStore.delete("user");
     redirect("/auth/login");
     return false;
   }
@@ -49,8 +69,20 @@ export const fetchApi = async (
   const fullUrl = url.startsWith("http") ? url : `${BACKEND_URL}${url}`;
 
   const setAuthHeaders = async (): Promise<Headers> => {
+
     const cookiesStore = await cookies();
-    const token = cookiesStore.get("token")?.value;
+    const userCookie = cookiesStore.get("user")?.value;
+    let token: string | undefined;
+
+    if (userCookie) {
+      try {
+        const userData = JSON.parse(userCookie);
+        token = userData.accessToken;
+      } catch (error) {
+        console.error('Error parsing user cookie:', error);
+      }
+    }
+
     const headers = new Headers(options.headers);
 
     if (token) {

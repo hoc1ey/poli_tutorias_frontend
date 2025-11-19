@@ -7,9 +7,7 @@
     "build": "next build --no-lint --turbopack",
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
-    "lint:ci": "eslint . || true",
-    "verify:azure": "node scripts/verify-azure-config.js",
-    "prebuild": "node scripts/verify-azure-config.js || true"
+    "lint:ci": "eslint . || true"
   },
   "dependencies": {
     "clsx": "^2.1.1",

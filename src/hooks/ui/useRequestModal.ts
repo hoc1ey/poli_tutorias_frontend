@@ -24,8 +24,6 @@ export const useRequestModal = () => {
 
     const offerId = params.slug as string;
 
-    console.log(offerId)
-
     const requestData = {
       offerId: offerId || '',
       studentEmail: data.studentEmail || user!.email!,
@@ -35,7 +33,6 @@ export const useRequestModal = () => {
       date: (day || new Date()).toISOString() as unknown as Date,
       paymentMethod: paymentMethod || 'cash',
     };
-
 
     const result = await createRequest(requestData);
 
@@ -70,7 +67,7 @@ export const useRequestModal = () => {
 
     },
       () => {
-        router.replace('/student')
+        router.replace('/student/requests')
       })
 
   }

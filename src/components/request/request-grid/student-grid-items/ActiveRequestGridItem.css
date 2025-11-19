@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+.scheduled-status {
+  @apply bg-(--light-green) text-(--green); 
+}
+
+.pending-status {
+  @apply bg-(--light-yellow) text-(--dark-orange)
+}
+
+.container {
+  @apply w-full flex flex-col border border-(--grey-border) px-[25px] py-[15px] rounded-[10px];
+}
+
+.info-section {
+  @apply flex flex-col gap-[4px] w-3/4;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.status-container {
+  @apply flex items-center justify-between w-1/4 h-full;
+}
+
+.status-badge {
+  @apply h-full rounded-[10px] font-bold text-[16px] px-[20px] py-[4px];
+  font-family: var(--font-inter), sans-serif;
+}
+
+.divider {
+  @apply text-[0.5px] text-(--grey-border) mt-[25px] mb-[10px];
+}
+
+.details-container {
+  @apply flex gap-[135px];
+}
+
+.detail-item {
+  @apply flex flex-col gap-[5px] text-[14px];
+}
+
+.text-bold {
+  @apply font-bold;
+}
+
+.text-semibold {
+  @apply font-semibold;
+}
+
+.text-small {
+  @apply text-[14px];
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}

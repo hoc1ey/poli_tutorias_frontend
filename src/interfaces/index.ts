@@ -1,3 +1,6 @@
+export type { PaginatedStudentRequestsResponse } from './responses/paginated-student-requests-response-interface';
+export type { StudentRequest } from './student-request-interface';
+export type { PaginatedStudentRequests } from './paginated-student-requests-interface';
 export type { CreateRequestResponse } from './responses/create-request-response-interface';
 export type { NewRequestFormInputs } from './forms/new-request-form-interface';
 export type { Request } from './request-interface';
@@ -26,6 +29,7 @@ export type { OfferFormInputs } from './forms/offer-form-interface';
 export type { AvailableCareers } from './available-careers-interface';
 export type { Career } from './career-interface';
 export type { Subject } from './subject-interface';
+
 
 
 

@@ -12,6 +12,11 @@ const menuItems = [
     matchPathname: '/student',
     matchPrefixes: ['/student/offer/']
   },
+  {
+    title: 'Mis Tutorías',
+    href: '/student/requests',
+    matchPathname: '/student/requests',
+  },
 ]
 
 export default async function StudentLayout({

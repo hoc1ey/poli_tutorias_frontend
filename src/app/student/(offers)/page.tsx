@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { redirect } from "next/navigation";
 import { getPaginatedAllOffers, getUserSession } from "@/actions";
-import { OfferGrid, Pagination, SearchBar, SearchHero, Title, WelcomeCard } from "@/components";
+import { OfferGrid, Pagination, SearchHero, WelcomeCard } from "@/components";
 import { montserrat } from "@/config/fonts";
 
 export const metadata = {
@@ -40,7 +40,6 @@ export default async function StudentHomePage({ searchParams }: Props) {
 
   const { data, success, message } = await getPaginatedAllOffers({ page, query });
 
-  // Si hay error, mostrar valores por defecto
   const offers = data?.offers || [];
   const totalPages = data?.totalPages || 0;
   const currentPage = data?.currentPage || 1;

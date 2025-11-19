@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { dancingScript, montserrat } from '@/config/fonts'
-import { TopMenuItem } from '../top-menu-item/TopMenuItem';
+import { TopMenuItem } from './TopMenuItem';
 import { ProfileImage } from '../profile-image/ProfileImage';
 
 interface Props {

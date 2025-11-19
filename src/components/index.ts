@@ -1,3 +1,7 @@
+export { StudentActiveRequestGridItem } from "./request/request-grid/student-grid-items/StudentActiveRequestGridItem";
+export { RequestGrid } from "./request/request-grid/RequestGrid";
+export { SectionMenuItem } from "./ui/section-menu/SectionMenuItem";
+export { SectionMenu } from "./ui/section-menu/SectionMenu";
 export { TimeSlotSelector } from "./request/time-slot-selector/TimeSlotSelector";
 export { DaySelector } from "./request/day-selector/DaySelector";
 export { AvailabilityCard } from "./request/availability-card/AvailabilityCard";
@@ -18,7 +22,7 @@ export { ImageUploader } from "./ui/image-uploader/ImageUploader";
 export { NewOfferTitle } from "./offer/new-offer-title/OfferTitle";
 export { PublishOffer } from "./offer/publish-offer/PublishOffer";
 export { TopMenu } from "./ui/top-menu/TopMenu";
-export { TopMenuItem } from "./ui/top-menu-item/TopMenuItem";
+export { TopMenuItem } from "./ui/top-menu/TopMenuItem";
 export { Schedule } from "./tutor/schedule/Schedule";
 export { ProfileImage } from './ui/profile-image/ProfileImage';
 export { OfferDescriptionCard } from "./offer/offer-description-card/OfferDescriptionCard";
