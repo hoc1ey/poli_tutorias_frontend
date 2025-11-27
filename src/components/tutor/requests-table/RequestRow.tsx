@@ -80,7 +80,7 @@ export const RequestRow = ({ request }: Props) => {
           })}
       >
         <div className="truncate">
-          {formatRequestDate(request.date.toDateString(), request.hours, true)}
+          {formatRequestDate(request.date.toString(), request.hours, true)}
         </div>
       </td>
       <td className="td-status font-semibold">
