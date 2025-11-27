@@ -1,14 +1,17 @@
 const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
-export const formatRequestDate = (date: Date, slots: string[], abbreviate: boolean = false) => {
+export const formatRequestDate = (dateString: string, slots: string[], abbreviate: boolean = false) => {
 
-  let dayName = daysOfWeek[date.getDay() + 1];
+  const [year, month, day] = dateString.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+
+  let dayName = daysOfWeek[date.getDay()];
   if (abbreviate) {
     dayName = dayName.substring(0, 3);
   }
 
-  const dayNumber = date.getDate() + 1;
+  const dayNumber = date.getDate();
 
   let monthName = months[date.getMonth()];
   if (abbreviate) {

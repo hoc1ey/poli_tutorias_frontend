@@ -2,7 +2,7 @@ import { Offer } from "./offer-interface";
 
 export interface StudentRequest {
   requestId: string,
-  date: Date,
+  date: string,
   hours: string[],
   price: number,
   paymentMethod: 'cash' | 'transfer',

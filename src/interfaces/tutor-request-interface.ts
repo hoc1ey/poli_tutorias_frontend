@@ -1,7 +1,7 @@
 export interface TutorRequest {
   requestId: string,
   createdAt: Date,
-  date: Date,
+  date: string,
   hours: string[],
   price: number,
   paymentMethod: 'cash' | 'transfer',

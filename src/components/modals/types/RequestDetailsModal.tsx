@@ -64,7 +64,7 @@ export const RequestDetailsModal = ({ request, onClose }: Props) => {
 
             <div className='flex'>
               <span className='w-[160px] font-medium'>Horario:</span>
-              <p className='w-full text-right'>{formatRequestDate(new Date(request.date), request.hours, true)}</p>
+              <p className='w-full text-right'>{formatRequestDate(request.date, request.hours, true)}</p>
             </div>
 
             <div className='flex'>
