@@ -5,7 +5,7 @@ export interface Request {
   studentEmail: string;
   studentPhone: string;
   studentMessage?: string;
-  date: string;
+  date: Date;
   price?: number;
   hours: string[];
   paymentMethod: 'cash' | 'transfer'

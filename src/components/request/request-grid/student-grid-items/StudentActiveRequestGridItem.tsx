@@ -55,7 +55,7 @@ export const StudentActiveRequestGridItem = ({ request }: Props) => {
             <span className="text-semibold">
               Horario:
             </span>
-            {" "}{formatRequestDate(request.date, request.hours)}
+            {" "}{formatRequestDate(request.date.toString(), request.hours)}
           </p>
 
           <p className="text-small">
