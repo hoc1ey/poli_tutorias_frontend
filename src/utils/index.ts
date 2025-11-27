@@ -1,4 +1,3 @@
-export { formatRequestDateTruncate } from "./formatRequestDateTruncate";
 export { formatRequestHours } from "./formatRequestHours";
 export { formatDate } from "./formatDate";
 export { formatDateTime } from "./formatDateTime";
