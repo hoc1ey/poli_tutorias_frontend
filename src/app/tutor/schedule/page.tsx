@@ -39,7 +39,7 @@ export default async function MySchedulePage() {
   }
 
   return (
-    <div>
+    <div className='mx-5 md:mx-[50px] my-3 md:my-5'>
 
       <TitleWithButton
         title={'Mi Horario'}

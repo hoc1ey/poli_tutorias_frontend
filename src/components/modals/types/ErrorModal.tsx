@@ -14,7 +14,7 @@ export const ErrorModal = ({ title, message, btnText, onConfirm, onClose }: Erro
   return (
     <div className="modal-container">
       <div className='modal-icon-container'>
-        <PiXCircleLight size={68} className='text-black' />
+        <PiXCircleLight size={68} className='bg-red-100 rounded-full text-red-400' />
       </div>
 
       <button

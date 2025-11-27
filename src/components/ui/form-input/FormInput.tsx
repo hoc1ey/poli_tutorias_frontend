@@ -7,6 +7,7 @@ interface FormInputProps {
   id: string;
   label: string;
   type?: 'text' | 'email' | 'password' | 'tel' | 'number';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   validation?: RegisterOptions;
   errors: FieldErrors;
@@ -59,7 +60,9 @@ export const FormInput = ({
       target.value = val;
     }
     setCount(val.length);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((reg as any)?.onChange) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (reg as any).onChange(e as any);
     }
   };

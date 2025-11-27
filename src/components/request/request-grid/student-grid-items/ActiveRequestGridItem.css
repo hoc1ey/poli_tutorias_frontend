@@ -13,12 +13,12 @@
 }
 
 .info-section {
-  @apply flex flex-col gap-[4px] w-3/4;
+  @apply flex flex-col gap-[4px] w-5/7;
   font-family: var(--font-inter), sans-serif;
 }
 
 .status-container {
-  @apply flex items-center justify-between w-1/4 h-full;
+  @apply flex items-center justify-center gap-[30px] w-2/7 h-full;
 }
 
 .status-badge {

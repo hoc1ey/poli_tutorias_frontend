@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { montserrat, inter } from '@/config/fonts';
 import { handleLogout } from '@/actions';
 import { useAppModal } from '@/hooks';
 import { useScheduleStore } from '@/store';

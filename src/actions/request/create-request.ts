@@ -18,7 +18,9 @@ export const createRequest = async (requestData: Request): Promise<CreateRequest
 
     const response = await fetchApi('/request/new', requestOptions);
 
-    return await response.json();
+    const result = await response.json();
+
+    return result;
 
   } catch (error) {
 
@@ -28,6 +30,7 @@ export const createRequest = async (requestData: Request): Promise<CreateRequest
       statusCode: 500,
       timestamp: new Date().toISOString(),
       path: '/request/new',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data: null as any,
     }
 

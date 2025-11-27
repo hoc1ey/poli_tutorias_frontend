@@ -14,7 +14,7 @@ export const CheckModal = ({ title, message, btnText, onConfirm, onClose }: Chec
   return (
     <div className="modal-container">
       <div className='modal-icon-container'>
-        <PiCheckCircleLight size={68} className='text-black' />
+        <PiCheckCircleLight size={68} className='bg-(--light-green) rounded-full text-(--green)' />
       </div>
 
       <button

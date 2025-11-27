@@ -5,9 +5,11 @@ export type ModalType = keyof typeof modalRegistry | null;
 
 interface ModalState {
   type: ModalType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: any;
   isOpen: boolean;
   onCloseCallback?: () => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   openModal: (type: Exclude<ModalType, null>, props?: any, onCloseCallback?: () => void) => void;
   closeModal: () => void;
 }

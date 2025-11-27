@@ -16,7 +16,7 @@ export const WarningModal = ({ title, message, confirmBtnText, cancelBtnText, on
   return (
     <div className="modal-container">
       <div className='modal-icon-container'>
-        <PiWarningCircleLight size={68} className='text-black' />
+        <PiWarningCircleLight size={68} className='bg-(--light-yellow) rounded-full text-(--dark-orange)' />
       </div>
 
       <button

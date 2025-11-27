@@ -1,0 +1,128 @@
+# azure-pipelines.yml (Frontend - Next.js adaptado para Vercel)
+
+# 1. Disparadores (Triggers)
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+pr:
+  branches:
+    include:
+      - develop
+
+# 2. Agente (Pool)
+pool:
+  name: PoliTutorias-LocalPool
+  demands:
+    - Agent.OS -equals Linux
+
+# 2.1 Variables útiles
+variables:
+  NODE_VERSION: "22.x"
+  VERCEL_DEPLOYMENT_URL: "https://app-politutorias-backend-staging.azurewebsites.net/api"
+  VERCEL_PROJECT_ID: "prj_YDYhdgLT12EU3Tfp7o0OlAiK66iN"
+  VERCEL_TEAM_ID: "team_rFjZG0SVqdEif7MINfBqAoiJ"
+  - group: Frontend-Vercel-Secrets
+
+# 3. Etapas (Stages)
+stages:
+  # ==================
+  # ETAPA DE BUILD (CI)
+  # ==================
+  - stage: Build
+    displayName: "1. Build Frontend (CI)"
+    jobs:
+      - job: Build
+        steps:
+          # Limpieza del workspace
+          - script: |
+              echo "Limpiando workspace local..."
+              rm -rf $(Agent.BuildDirectory)/*
+              echo "Workspace limpio."
+            displayName: "Clean workspace"
+
+          - checkout: self
+            submodules: true
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: "$(NODE_VERSION)"
+            displayName: "Instalar Node.js 22 LTS"
+
+          - script: npm ci
+            displayName: "Instalar dependencias"
+
+          - script: npm run build
+            displayName: "Compilar proyecto (npm run build)"
+            env:
+              # Inyectar variables de entorno específicas para el Build
+              NEXT_PUBLIC_BACKEND_URL: "$(VERCEL_DEPLOYMENT_URL)"
+              IMAGE_PROTOCOL: "https"
+              IMAGE_HOSTNAME: "stpolitutoriasstagingep.blob.core.windows.net"
+
+          - task: ArchiveFiles@2
+            inputs:
+              rootFolderOrFile: "$(System.DefaultWorkingDirectory)/.next" # Next.js output
+              includeRootFolder: false
+              archiveType: "zip"
+              archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
+              replaceExistingArchive: true
+            displayName: "Archivar carpeta .next (.zip)"
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
+              ArtifactName: "frontend-nextjs"
+            displayName: "Publicar artefacto"
+
+  # ========================
+  # ETAPA DE DESPLIEGUE (CD)
+  # ========================
+  - stage: Deploy
+    displayName: "2. Deploy to Vercel (CD)"
+    dependsOn: Build
+    condition: succeeded() # Se ejecuta si el build fue exitoso
+
+    jobs:
+      - deployment: DeployVercel
+        displayName: "Desplegar en Vercel"
+        # Usamos el pool local
+        pool:
+          name: PoliTutorias-LocalPool
+          demands:
+            - Agent.OS -equals Linux
+
+        environment: "VercelDeployment"
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                # Paso 1: Descargar el artefacto (la carpeta .next)
+                - task: DownloadBuildArtifacts@1
+                  inputs:
+                    buildType: "current"
+                    artifactName: "frontend-nextjs"
+                    downloadPath: "$(System.DefaultWorkingDirectory)"
+                  displayName: "Descargar artefacto (frontend-nextjs)"
+
+                # Paso 2: Desplegar en Vercel
+                - task: vercel-deployment-task@1
+                  displayName: "Desplegar a Vercel"
+                  inputs:
+                    # Las variables vienen del grupo de variables enlazado a Key Vault:
+                    vercelProjectId: "$(VERCEL_PROJECT_ID)"
+                    vercelTeamId: "$(VERCEL_TEAM_ID)"
+                    vercelToken: "$(VERCEL_TOKEN)"
+
+                    # El 'path' debe apuntar a la carpeta .next que descargaste del artefacto
+                    path: "$(System.DefaultWorkingDirectory)/frontend-nextjs"
+
+                    # Si es la rama 'main' es producción, sino, es preview
+                    production: ${{ eq(variables['Build.SourceBranch'], 'refs/heads/main') }}
+
+                    # Inyectar las variables de entorno del frontend
+                    environment: |
+                      NEXT_PUBLIC_BACKEND_URL=$(VERCEL_DEPLOYMENT_URL)
+                      IMAGE_PROTOCOL=https
+                      IMAGE_HOSTNAME=stpolitutoriasstagingep.blob.core.windows.net

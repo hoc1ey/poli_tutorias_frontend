@@ -17,7 +17,9 @@ const menuItems = [
   },
 ]
 
-const validQueries = ['my-requests']
+const getValidQueries = () => {
+  return menuItems.map(item => item.query);
+}
 
 interface Props {
   searchParams: {
@@ -51,7 +53,7 @@ export default async function StudentRequestsPage({ searchParams }: Props) {
 
       <div className="flex flex-col min-h-[70vh] mt-[30px] mx-[30px]">
 
-        <SectionMenu menuItems={menuItems} validQueries={validQueries} />
+        <SectionMenu menuItems={menuItems} validQueries={getValidQueries()} />
 
         {
           !success ? (

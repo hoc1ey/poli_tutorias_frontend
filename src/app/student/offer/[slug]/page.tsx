@@ -9,7 +9,6 @@ import { IoMdArrowBack } from "react-icons/io";
 
 export async function generateMetadata(
   { params }: Props,
-  parent: ResolvingMetadata
 ): Promise<Metadata> {
 
   const slug = (await params).slug

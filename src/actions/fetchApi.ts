@@ -90,6 +90,7 @@ export const fetchApi = async (
     }
 
     const method = (options.method || "GET").toString().toUpperCase();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const body = options.body as any;
 
     const isFormData = typeof FormData !== "undefined" && body instanceof FormData;

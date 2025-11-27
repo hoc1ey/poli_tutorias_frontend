@@ -6,6 +6,11 @@ import { TopMenu } from "../../components";
 
 const menuItems = [
   {
+    title: 'Solicitudes',
+    href: '/tutor/requests',
+    matchPathname: '/tutor/requests',
+  },
+  {
     title: 'Mis Ofertas',
     href: '/tutor/offers',
     matchPathname: '/tutor/offers',
@@ -46,7 +51,6 @@ export default async function TutorLayout({
         role={user!.role![0] || 'tutor'}
       />
       <div
-        className='mx-5 md:mx-[50px] my-3 md:my-5'
       >
         {children}
       </div>

@@ -5,7 +5,6 @@ import { ResolvingMetadata, Metadata } from 'next';
 
 export async function generateMetadata(
   { params }: Props,
-  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = (await params).slug
 
@@ -52,7 +51,7 @@ export default async function OfferPage({ params }: Props) {
   const result = await getSchedule();
 
   return (
-    <main>
+    <main className='mx-5 md:mx-[50px] my-3 md:my-5'>
       <PublishOffer availableCareersAndSubjects={data} hasSchedule={result.data.days.length !== 0} />
     </main>
   );

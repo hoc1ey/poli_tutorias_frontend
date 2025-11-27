@@ -1,17 +1,27 @@
 const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-const months = ['Eneero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
-export const formatRequestDate = (date: Date, slots: string[]) => {
+export const formatRequestDate = (date: Date, slots: string[], abbreviate: boolean = false) => {
 
-  const dayName = daysOfWeek[date.getDay()];
-  const dayNumber = date.getDate();
-  const monthName = months[date.getMonth()];
+  let dayName = daysOfWeek[date.getDay() + 1];
+  if (abbreviate) {
+    dayName = dayName.substring(0, 3);
+  }
+
+  const dayNumber = date.getDate() + 1;
+
+  let monthName = months[date.getMonth()];
+  if (abbreviate) {
+    monthName = monthName.substring(0, 3);
+  }
 
   const formattedSlots = slots.map(slot => {
     const hour = parseInt(slot, 10);
-    return `${hour}:00 - ${hour + 1}:00`;
+    const startHour = String(hour).padStart(2, '0');
+    const endHour = String(hour + 1).padStart(2, '0');
+    return `${startHour}:00 - ${endHour}:00`;
   });
 
-  return `${dayName} ${dayNumber} de ${monthName}, de ${formattedSlots.join(', ')}`;
+  return `${dayName} ${dayNumber} de ${monthName}, ${formattedSlots.join(', ')}`;
 
 }

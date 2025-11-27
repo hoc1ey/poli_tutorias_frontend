@@ -9,6 +9,7 @@ import './FormPasswordInput.css';
 interface FormPasswordInputProps {
   id: string;
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   validation?: RegisterOptions;
   errors: FieldErrors;

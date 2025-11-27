@@ -11,6 +11,7 @@ interface FormSelectProps {
   id: string;
   label: string;
   options: Option[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   validation?: RegisterOptions;
   errors: FieldErrors;

@@ -10,10 +10,9 @@ export const Title = ({ title, description }: Props) => {
         <div className='w-full md:w-3/4'>
           <h1 className="section-title">{title}</h1>
         </div>
-
       </div>
 
-      <hr className='mb-[4px] text-(--grey)' />
+      <hr className='mb-[4px] border-t-2 border-gray-400' />
 
       <p
         className="section-description"

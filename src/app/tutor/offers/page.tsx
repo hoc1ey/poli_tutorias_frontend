@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { getPaginatedTutorsOffers, getUserSession } from "@/actions";
-import { OfferGrid, Pagination, SearchBar, TitleWithButton, WelcomeCard } from "@/components";
+import { OfferGrid, Pagination, TitleWithButton, WelcomeCard } from "@/components";
 import { redirect } from "next/navigation";
 
 const role = 'tutor';
@@ -41,7 +41,7 @@ export default async function OffersPage({ searchParams }: Props) {
   currentPage > totalPages && totalPages > 0 && redirect('/tutor/offers')
 
   return (
-    <div>
+    <div className="mx-5 md:mx-[50px] mt-3 md:mt-5">
 
       <WelcomeCard name={user.name || ''} image={user.image || ''} />
 

@@ -6,6 +6,7 @@ import './FormTextarea.css';
 interface FormTextareaProps {
   id: string;
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   validation?: RegisterOptions;
   errors: FieldErrors;
@@ -56,7 +57,9 @@ export const FormTextarea = ({
       target.value = val;
     }
     setCount(val.length);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((reg as any)?.onChange) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (reg as any).onChange(e as any);
     }
   };

@@ -7,7 +7,11 @@
   --dark-blue: #17243D;
 
   --light-yellow: #FEF3C7;
+  --yellow: #F6B750;
   --dark-yellow: #FBBF24;
+
+  --light-red: #FFC9C9;
+  --dark-red: #C12323;
   
   --dark-orange: #92400E;
 
@@ -19,6 +23,8 @@
   --grey-blue: #4F5F7D;
   --grey-border: #9598AF;
   --dark-grey: #6B7280;
+
+  --grey-message-background: #D9D9D940;
 
   --white-background: #F3F6FF;
 

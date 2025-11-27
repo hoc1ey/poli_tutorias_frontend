@@ -32,6 +32,7 @@ export const getPaginatedAllOffers = async ({ page = 1, query }: PaginatedOption
       statusCode: 500,
       timestamp: new Date().toISOString(),
       path: url,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data: null as any
     }
   }

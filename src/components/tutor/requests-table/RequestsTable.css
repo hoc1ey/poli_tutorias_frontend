@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+:root {
+  --blue-point: #2563EB;
+}
+
+.conflict-row {
+  @apply border-l-[3px] border-(--dark-red);
+}
+
+.conflict-font {
+  @apply font-semibold text-(--dark-red);
+}
+
+.no-reviewed-font {
+  @apply font-semibold text-(--dark-blue);
+}
+
+.expired-font {
+  @apply font-normal text-(--grey);
+}
+
+.pending-tag {
+  @apply bg-(--light-green) text-(--green);
+}
+
+.conflict-tag {
+  @apply bg-(--light-red) text-(--dark-red);
+}
+
+.expired-tag {
+  @apply bg-(--light-yellow) text-(--yellow);
+}
+
+.table {
+  @apply mt-[25px] text-left table-fixed;
+  width: 100%;
+}
+
+.header-row {
+  @apply bg-(--light-blue) w-full h-[45px] font-sans font-bold text-[14px] border-b border-(--grey-border);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.body-row {
+  @apply w-full font-medium text-[14px] text-(--dark-blue) border-b border-(--grey-border);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.th-student {
+  @apply pl-[30px];
+  width: 18.597%;
+}
+
+.th-subject {
+  @apply pl-[15px];
+  width: 18.597%;
+}
+
+.th-request-date {
+  @apply pl-[15px];
+  width: 19.46%;
+}
+
+.th-proposed-date {
+  @apply pl-[15px];
+  width: 20.814%;
+}
+
+.th-status {
+  @apply pl-[15px];
+  width: 22.62%;
+}
+
+.td-student {
+  @apply pl-[5px] overflow-hidden whitespace-nowrap min-w-0;
+  text-overflow: ellipsis;
+}
+
+.td-subject {
+  @apply pl-[15px] py-[15px] overflow-hidden;
+}
+
+.td-request-date {
+  @apply pl-[15px] py-[15px];
+}
+
+.td-proposed-date {
+  @apply pl-[15px] py-[15px];
+}
+
+.td-status {
+  @apply pl-[15px] py-[15px];
+}
+
+/* Ensure truncation works: inner elements with .truncate will receive ellipsis */
+.table th,
+.table td {
+  overflow: hidden;
+}
+
+.td-student > .truncate,
+.td-subject > .truncate,
+.td-request-date > .truncate,
+.td-proposed-date > .truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+
+

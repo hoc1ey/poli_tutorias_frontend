@@ -42,7 +42,7 @@ export const OfferForm = ({
       setValue('subject', 'default')
       setSelectedSubject('default');
     }
-  }, [selectedCareer, availableCareersAndSubjects]);
+  }, [selectedCareer, availableCareersAndSubjects, setValue]);
 
   const handleCareerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCareer(e.target.value);

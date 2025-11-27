@@ -1,6 +1,5 @@
 'use client';
 
-import { inter } from "@/config/fonts";
 import { IoSearchSharp } from "react-icons/io5";
 import React, { useState, useRef } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

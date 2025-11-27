@@ -23,6 +23,7 @@ export const getOfferDetails = async (offerId: string): Promise<OfferDetailRespo
       statusCode: 500,
       timestamp: new Date().toISOString(),
       path: `/offer/detail/${offerId}`,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data: null as any
     }
 

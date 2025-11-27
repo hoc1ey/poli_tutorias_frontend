@@ -1,3 +1,6 @@
+export { RequestDetailsButton } from "./tutor/requests-table/RequestDetailsButton";
+export { RequestRow } from "./tutor/requests-table/RequestRow";
+export { RequestsTable } from "./tutor/requests-table/RequestsTable";
 export { StudentActiveRequestGridItem } from "./request/request-grid/student-grid-items/StudentActiveRequestGridItem";
 export { RequestGrid } from "./request/request-grid/RequestGrid";
 export { SectionMenuItem } from "./ui/section-menu/SectionMenuItem";
@@ -36,7 +39,9 @@ export { ErrorModal } from "./modals/types/ErrorModal";
 export { WarningModal } from "./modals/types/WarningModal";
 export { ModalRoot } from "./modals/ModalRoot";
 export { RequestModal } from "./modals/types/RequestModal";
-
+export { CancelRequestModal } from "./modals/types/CancelRequestModal";
+export { RequestDetailsModal } from "./modals/types/RequestDetailsModal";
+export { ConfirmedTutoringModal } from "./modals/types/ConfirmedTutoringModal";
 
 // Form Components
 export { FormInput } from "./ui/form-input/FormInput";

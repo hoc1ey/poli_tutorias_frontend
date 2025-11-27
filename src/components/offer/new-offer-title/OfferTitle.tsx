@@ -1,21 +1,9 @@
 'use client';
 
 import React from 'react'
-import { inter, lato, montserrat } from '@/config/fonts'
 import { useAppModal } from '../../../hooks';
 import { useRouter } from 'next/navigation';
 import './OfferTitle.css'
-
-
-interface FormInputs {
-  career: string;
-  mode: 'online' | 'in-person';
-  price: number;
-  subject: string;
-  indications: string;
-  description: string;
-  image: File;
-}
 
 interface Props {
   isSubmitting: boolean;

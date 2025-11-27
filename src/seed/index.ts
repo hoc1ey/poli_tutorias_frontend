@@ -1,3 +1,4 @@
+export { tutorRequestsSeedData } from "./seed-tutor-requests";
 export { studentRequestsSeedData } from "./seed-student-requests";
 export { baseScheduleSeedData } from "./seed-base-schedule";
 export { allOffersSeedData } from "./seed-all-offers";

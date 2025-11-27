@@ -2,13 +2,12 @@
 
 import { PaginatedStudentRequestsResponse } from "@/interfaces";
 import { fetchApi } from "../fetchApi";
-import { studentRequestsSeedData } from "../../seed";
 
 interface PaginatedOptions {
   page?: number;
 }
 
-export const getPaginatedStudentRequests = async ({ page = 1 }): Promise<PaginatedStudentRequestsResponse> => {
+export const getPaginatedStudentRequests = async ({ page = 1 }: PaginatedOptions): Promise<PaginatedStudentRequestsResponse> => {
 
   const limit = 10;
   const offset = (page - 1) * limit;
@@ -34,6 +33,7 @@ export const getPaginatedStudentRequests = async ({ page = 1 }): Promise<Paginat
       statusCode: 500,
       timestamp: new Date().toISOString(),
       path: "/request/my-requests",
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data: [] as any
     }
 

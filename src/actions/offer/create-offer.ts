@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { CareersSubjectResponse } from "../../interfaces"
-import { fetchApi, getUserSession } from "@/actions";
+import { fetchApi } from "@/actions";
 
 export const createOffer = async (formdata: FormData): Promise<CareersSubjectResponse> => {
 
@@ -24,7 +24,7 @@ export const createOffer = async (formdata: FormData): Promise<CareersSubjectRes
 
     return result
 
-  } catch (error: any) {
+  } catch (error) {
 
     return {
       success: false,

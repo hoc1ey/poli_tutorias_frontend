@@ -16,15 +16,7 @@ interface Props {
 
 export const Schedule = ({ weeklyScheduleProp, isEditable }: Props) => {
 
-  if (!weeklyScheduleProp) {
-    return (
-      <div className="flex justify-center items-center min-h-[50vh]">
-        <p className="offer-grid-no-content">Error al cargar el horario.</p>
-      </div>
-    )
-  }
-
-  const { weeklySchedule, toggleSlotAvailability, setSchedule, initializeSchedule } = useScheduleStore();
+  const { weeklySchedule, toggleSlotAvailability, initializeSchedule, setSchedule } = useScheduleStore();
 
   useEffect(() => {
     if (weeklyScheduleProp && weeklyScheduleProp.days && weeklyScheduleProp.days.length > 0) {
@@ -33,11 +25,19 @@ export const Schedule = ({ weeklyScheduleProp, isEditable }: Props) => {
     else if (weeklySchedule.days.length === 0) {
       initializeSchedule(baseScheduleSeedData);
     }
-  }, [weeklyScheduleProp]);
+  }, [weeklyScheduleProp, initializeSchedule, setSchedule, weeklySchedule.days.length]);
 
   const currentSchedule = weeklySchedule;
 
   const hours = currentSchedule.days[0]?.slots?.map(slot => slot.hour) || [];
+
+  if (!weeklyScheduleProp) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh]">
+        <p className="offer-grid-no-content">Error al cargar el horario.</p>
+      </div>
+    )
+  }
 
   return (
     <div className='flex w-full items-center align-middle justify-center mt-7 mb-[46px]'>

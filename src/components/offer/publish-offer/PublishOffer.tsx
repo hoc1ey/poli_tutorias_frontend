@@ -8,7 +8,6 @@ import { NewOfferTitle } from '@/components';
 import { OfferForm } from '@/components';
 import { useRouter } from 'next/navigation';
 import { createOffer } from '../../../actions';
-import { useSessionStore } from '../../../store';
 
 interface Props {
   availableCareersAndSubjects: AvailableCareers;
@@ -45,8 +44,6 @@ export const PublishOffer = ({ availableCareersAndSubjects, hasSchedule }: Props
   } = useForm<OfferFormInputs>();
 
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-
-  const user = useSessionStore((state) => state.user);
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 

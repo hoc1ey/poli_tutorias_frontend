@@ -1,6 +1,5 @@
 import React from 'react'
 import { SectionMenuItem } from './SectionMenuItem';
-import { Interface } from 'readline';
 
 interface Props {
   menuItems: {
